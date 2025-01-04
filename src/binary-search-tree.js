@@ -16,15 +16,15 @@ class Node {
 class BinarySearchTree {
 
   constructor() {
-    this.root = null;
+    this.rootNode = null;
   }
 
   root() {
-    return this.root;
+    return this.rootNode;
   }
 
   add(data) {
-    if (!this.root) return this.root = new Node(data);
+    if (!this.rootNode) return this.rootNode = new Node(data);
 
     const addData = (node) => {
       if (!node) return new Node(data);
@@ -37,11 +37,11 @@ class BinarySearchTree {
       return node;
     }
 
-    addData(this.root); 
+    addData(this.rootNode); 
   }
 
   has(data) {
-    if (!data || !this.root) return false;
+    if (!data || !this.rootNode) return false;
     
     const hasData = (node) => {
       if (!node) return false;
@@ -50,11 +50,11 @@ class BinarySearchTree {
       else return true;
     }
 
-    return   hasData(this.root);
+    return   hasData(this.rootNode);
   }
 
   find(data) {
-    if (!data || !this.root) return null;
+    if (!data || !this.rootNode) return null;
     
     const findData = (node) => {
       if (!node) return null;
@@ -63,11 +63,11 @@ class BinarySearchTree {
       else return node;
     }
 
-    return   findData(this.root);
+    return   findData(this.rootNode);
   }
 
   remove(data) {
-    if (!data || !this.root) return null;
+    if (!data || !this.rootNode) return null;
     
     const findData = (node) => {
       if (!node) return null;
@@ -89,32 +89,34 @@ class BinarySearchTree {
       return node;
     }
 
-    return   findData(this.root);
+    return   findData(this.rootNode);
   }
 
   min() {
-    if (!this.root) return null;
+    if (!this.rootNode) return null;
 
     const findMin = (node) => {
       if (!node.left) return node.data;
       return findMin(node.left); 
     }
 
-    return findMin(this.root);
+    return findMin(this.rootNode);
   }
 
   max() {
-    if (!this.root) return null;
+    if (!this.rootNode) return null;
 
     const findMax = (node) => {
       if (!node.right) return node.data;
       return findMax(node.right);
     }
 
-    return findMax(this.root);
+    return findMax(this.rootNode);
   }
 }
 
+const tree = new BinarySearchTree();
+console.log(tree.root());
 module.exports = {
   BinarySearchTree
 };
